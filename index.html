@@ -11,7 +11,42 @@
 </head>
 
 <body>
-    <h1>Contact List</h1>
+    <div class="container">
+        <h1>Contact List</h1>
+        <div class="row">
+            <table class="table col-sm-12 col-lg-9">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ryan</td>
+                        <td>Libed</td>
+                        <td>(555)555-5555</td>
+                    </tr>
+                </tbody>
+            </table>
+            <form class="col-sm-12 col-lg-3">
+                <div class="form-group">
+                    <input name="name" type="text" class="form-control" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <input name="email" type="email" class="form-control" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input name="number" type="text" class="form-control" placeholder="Phone Number">
+                </div>
+                <button class="btn btn-success" type="button">Add Contact</button>
+                <button class="btn btn-primary" type="button">Reset</button>
+            </form>
+        </div>
+    </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

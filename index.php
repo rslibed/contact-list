@@ -1,3 +1,21 @@
+<?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        require 'database.php';
+    $sql = "INSERT INTO contacts(first_name, last_name, email, phone)
+            VALUES ('"  . $_POST['first_name'] . "','"
+                        . $_POST['last_name'] . "','"
+                        . $_POST['email'] . "','"
+                        . $_POST['phone'] . "')";
+    $results = mysqli_query($conn, $sql);
+    if ($results === false) {
+        echo mysqli_error($conn);
+    } else {
+        $id = mysqli_insert_id($conn);
+        echo "inserted record with ID: " . $id;
+    }
+    }
+    
+?>
 <!doctype html>
 <html lang="en">
 
@@ -30,18 +48,20 @@
                     </tr>
                 </tbody>
             </table>
-            <form class="col-sm-12 col-lg-3">
+            <form method="post" class="col-sm-12 col-lg-3">
                 <div class="form-group">
-                    <input name="name" type="text" class="form-control" placeholder="Name">
+                    <input name="first_name" type="text" class="form-control" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <input name="last_name" type="text" class="form-control" placeholder="Last Name">
                 </div>
                 <div class="form-group">
                     <input name="email" type="email" class="form-control" placeholder="Email">
                 </div>
                 <div class="form-group">
-                    <input name="number" type="text" class="form-control" placeholder="Phone Number">
+                    <input name="phone" type="text" class="form-control" placeholder="Phone Number">
                 </div>
-                <button class="btn btn-success" type="button">Add Contact</button>
-                <button class="btn btn-primary" type="button">Reset</button>
+                <button class="btn btn-success" type="submit">Add Contact</button>
             </form>
         </div>
     </div>

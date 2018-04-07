@@ -23,7 +23,10 @@
         echo "inserted record with ID: " . $id;
     }
     }
-    
+    // function deleteContact(contact_id) {
+    //     $sql = "DELETE FROM contacts
+    //     WHERE id = contact_id";
+    // }
 ?>
 <!doctype html>
 <html lang="en">
@@ -56,10 +59,11 @@
                 <?php else: ?>
                     <?php foreach($list as $list_item): ?>
                         <tr>
-                            <td><?= $list_item["first_name"] ?></h1>
-                            <td><?= $list_item["last_name"] ?></p>
-                            <td><?= $list_item["email"] ?></p>
-                            <td><?= $list_item["phone"] ?></p>
+                            <td><?= $list_item["first_name"] ?></td>
+                            <td><?= $list_item["last_name"] ?></td>
+                            <td><?= $list_item["email"] ?></td>
+                            <td><?= $list_item["phone"] ?></td>
+                            <td><button type="button" class="btn btn-danger delete">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>

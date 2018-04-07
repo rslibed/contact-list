@@ -1,6 +1,15 @@
 <?php
+    require 'database.php';
+    $sql = "SELECT * FROM contacts";
+    $contact_list = mysqli_query($conn, $sql);
+
+    if ($contact_list === false) {
+        echo mysqli_error($conn);
+    } else {
+        $list = mysqli_fetch_all($contact_list, MYSQLI_ASSOC);
+    }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        require 'database.php';
+        // require 'database.php';
     $sql = "INSERT INTO contacts(first_name, last_name, email, phone)
             VALUES ('"  . $_POST['first_name'] . "','"
                         . $_POST['last_name'] . "','"
@@ -35,17 +44,25 @@
             <table class="table col-sm-12 col-lg-9">
                 <thead>
                     <tr>
-                        <th scope="col">Name</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone Number</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Ryan</td>
-                        <td>Libed</td>
-                        <td>(555)555-5555</td>
-                    </tr>
+                <?php if(empty($contact_list)): ?>
+                    <p>Sorry, no contacts are available.</p>
+                <?php else: ?>
+                    <?php foreach($list as $list_item): ?>
+                        <tr>
+                            <td><?= $list_item["first_name"] ?></h1>
+                            <td><?= $list_item["last_name"] ?></p>
+                            <td><?= $list_item["email"] ?></p>
+                            <td><?= $list_item["phone"] ?></p>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
                 </tbody>
             </table>
             <form method="post" class="col-sm-12 col-lg-3">

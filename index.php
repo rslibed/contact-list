@@ -1,28 +1,6 @@
 <?php
-    require 'database.php';
-    $sql = "SELECT * FROM contacts";
-    $contact_list = mysqli_query($conn, $sql);
-
-    if ($contact_list === false) {
-        echo mysqli_error($conn);
-    } else {
-        $list = mysqli_fetch_all($contact_list, MYSQLI_ASSOC);
-    }
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // require 'database.php';
-    $sql = "INSERT INTO contacts(first_name, last_name, email, phone)
-            VALUES ('"  . $_POST['first_name'] . "','"
-                        . $_POST['last_name'] . "','"
-                        . $_POST['email'] . "','"
-                        . $_POST['phone'] . "')";
-    $results = mysqli_query($conn, $sql);
-    if ($results === false) {
-        echo mysqli_error($conn);
-    } else {
-        $id = mysqli_insert_id($conn);
-        echo "inserted record with ID: " . $id;
-    }
-    }
+    require 'includes/database.php';
+    require 'includes/get_data.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -49,7 +27,7 @@
                         <th scope="col">Phone Number</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="contactList">
                 <?php if(empty($contact_list)): ?>
                     <p>Sorry, no contacts are available.</p>
                 <?php else: ?>
@@ -67,19 +45,22 @@
             </table>
             <form method="post" class="col-sm-12 col-lg-3">
                 <div class="form-group">
-                    <input name="first_name" type="text" class="form-control" placeholder="First Name">
+                    <input name="first_name" type="text" class="form-control firstName" placeholder="First Name">
                 </div>
                 <div class="form-group">
-                    <input name="last_name" type="text" class="form-control" placeholder="Last Name">
+                    <input name="last_name" type="text" class="form-control lastName" placeholder="Last Name">
                 </div>
                 <div class="form-group">
-                    <input name="email" type="email" class="form-control" placeholder="Email">
+                    <input name="email" type="email" class="form-control email" placeholder="Email">
                 </div>
                 <div class="form-group">
-                    <input name="phone" type="text" class="form-control" placeholder="Phone Number">
+                    <input name="phone" type="text" class="form-control phone" placeholder="Phone Number">
                 </div>
-                <button class="btn btn-success" type="submit">Add Contact</button>
+                <button class="btn btn-success add" type="submit">Add Contact</button>
             </form>
+            <div class="container">
+                <p class="error"></p>
+            </div>
         </div>
     </div>
     </div>

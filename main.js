@@ -3,16 +3,61 @@ $('.delete').click(function() {
   $(this).parent().parent().remove();
   $.ajax({
     type: 'POST',
-    url: 'delete.php',
+    url: 'includes/delete.php',
     dataType: 'json',
     data: {
       contactId
     },
-    success: function(data) {
-      console.log('AJAX DELETE WAS CALLED:', data);
-    },
     error: function() {
-      console.log('THERE WAS AN ERROR');
+      $('.error').text(
+        'Sorry there was an error with your request. Please try again later.'
+      );
     }
   });
+});
+
+$('.add').click(function() {
+  $.ajax({
+    type: 'POST',
+    url: 'includes/add.php',
+    data: {
+      first_name: $('.firstName').val(),
+      last_name: $('.lastName').val(),
+      email: $('.email').val(),
+      phone: $('.phone').val()
+    },
+    dataType: 'json',
+    success: function(data) {
+      console.log(data);
+    },
+    error: function() {
+      $('.error').text(
+        'Sorry there was an error with your request. Please try again later.'
+      );
+    }
+  });
+  const firstNameVal = $('.firstName').val();
+  const lastNameVal = $('.lastName').val();
+  const emailVal = $('.email').val();
+  const phoneVal = $('.phone').val();
+  let newContact = $('<tr>').attr('contactId');
+  let firstNameElement = $('<td>', {
+    text: firstNameVal
+  });
+  let lastNameElement = $('<td>', {
+    text: lastNameVal
+  });
+  let emailElement = $('<td>', {
+    text: emailVal
+  });
+  let phoneElement = $('<td>', {
+    text: phoneVal
+  });
+  newContact.append([
+    firstNameElement,
+    lastNameElement,
+    emailElement,
+    phoneElement
+  ]);
+  $('.contactList').append(newContact);
 });

@@ -40,7 +40,7 @@ $('.add').click(function() {
   const lastNameVal = $('.lastName').val();
   const emailVal = $('.email').val();
   const phoneVal = $('.phone').val();
-  let newContact = $('<tr>').attr('contactId');
+  let newContact = $('<tr>');
   let firstNameElement = $('<td>', {
     text: firstNameVal
   });
@@ -53,6 +53,7 @@ $('.add').click(function() {
   let phoneElement = $('<td>', {
     text: phoneVal
   });
+  console.log('NEW CONTACT: ', newContact);
   newContact.append([
     firstNameElement,
     lastNameElement,

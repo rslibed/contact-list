@@ -25,6 +25,8 @@
                         <th scope="col">Last Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone Number</th>
+                        <th scope="col">Edit Contact</th>
+                        <th scope="col">Delete Contact</th>
                     </tr>
                 </thead>
                 <tbody class="contactList">
@@ -37,6 +39,7 @@
                             <td><?= $list_item["last_name"] ?></td>
                             <td><?= $list_item["email"] ?></td>
                             <td><?= $list_item["phone"] ?></td>
+                            <td><button contactId=<?= $list_item["id"] ?> type="button" class="btn btn-info">Edit</button></td>
                             <td><button contactId=<?= $list_item["id"] ?> type="button" class="btn btn-danger delete">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>

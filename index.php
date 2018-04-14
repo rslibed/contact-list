@@ -39,7 +39,7 @@
                             <td><?= $list_item["last_name"] ?></td>
                             <td><?= $list_item["email"] ?></td>
                             <td><?= $list_item["phone"] ?></td>
-                            <td><button contactId=<?= $list_item["id"] ?> type="button" class="btn btn-info">Edit</button></td>
+                            <td><button contactId=<?= $list_item["id"] ?> type="button" class="btn btn-info edit">Edit</button></td>
                             <td><button contactId=<?= $list_item["id"] ?> type="button" class="btn btn-danger delete">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>

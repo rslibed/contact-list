@@ -15,7 +15,13 @@ $('.delete').click(function() {
     }
   });
 });
-
+$('.edit').click(function() {
+  if ($(this).parent().parent().children().attr('contenteditable') === 'true') {
+    $(this).parent().parent().children().attr('contenteditable', 'false');
+  } else {
+    $(this).parent().parent().children().attr('contenteditable', 'true');
+  }
+});
 $('.add').click(function() {
   $.ajax({
     type: 'POST',

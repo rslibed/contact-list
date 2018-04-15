@@ -1,7 +1,15 @@
 <?php
     require 'includes/database.php';
+    if (sizeof($_POST) > 0) {
+        $sql="UPDATE contacts SET
+        first_name='".$_POST['first_name']."',
+        last_name='".$_POST['last_name']."',
+        phone='".$_POST['phone']."',
+        email='".$_POST['email']."'
+        WHERE id='".$_POST['id']."'";
+        mysqli_query($conn, $sql);
+    }
     require 'includes/get_data.php';
-    
 ?>
 <!doctype html>
 <html lang="en">

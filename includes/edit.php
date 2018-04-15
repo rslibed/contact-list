@@ -13,6 +13,15 @@
     } else {
         $contact = null;
     }
+    // if (sizeof($_POST) > 0) {
+    //     $sql="UPDATE contacts SET
+    //     first_name='".$_POST['first_name']."',
+    //     last_name='".$_POST['last_name']."',
+    //     phone='".$_POST['phone']."',
+    //     email='".$_POST['email']."'
+    //     WHERE id='".$_POST['id']."'";
+    //     mysqli_query($conn, $sql);
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,12 +31,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
-    <title>Contact List</title>
+    <title>Edit Contact</title>
 </head>
 <body>
     <div class="container">
         <h1>Edit Contact</h1>
-        <form method="post" class="col-sm-12 col-lg-3">
+        <form method="post" action="../index.php" class="col-sm-12 col-lg-3">
             <div class="form-group">
                 <input name="first_name" type="text" class="form-control firstName" placeholder="First Name" value="<?= $contact["first_name"] ?>">
             </div>
@@ -40,6 +49,7 @@
             <div class="form-group">
                 <input name="phone" type="text" class="form-control phone" placeholder="Phone Number" value="<?= $contact["phone"] ?>">
             </div>
+                <input name="id" type="hidden" class="form-control" value="<?= $contact["id"] ?>">
             <button class="btn btn-primary edit" type="submit">Edit Contact</button>
         </form>
     </div>

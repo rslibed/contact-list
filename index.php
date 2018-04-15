@@ -1,6 +1,7 @@
 <?php
     require 'includes/database.php';
     require 'includes/get_data.php';
+    
 ?>
 <!doctype html>
 <html lang="en">
@@ -39,7 +40,7 @@
                             <td><?= $list_item["last_name"] ?></td>
                             <td><?= $list_item["email"] ?></td>
                             <td><?= $list_item["phone"] ?></td>
-                            <td><button contactId=<?= $list_item["id"] ?> type="button" class="btn btn-info edit">Edit</button></td>
+                            <td><a href="includes/edit.php?id=<?= $list_item['id'] ?>">Edit</a></td>
                             <td><button contactId=<?= $list_item["id"] ?> type="button" class="btn btn-danger delete">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>

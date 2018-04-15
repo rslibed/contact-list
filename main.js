@@ -15,23 +15,7 @@ $('.delete').click(function() {
     }
   });
 });
-$('.edit').click(function() {
-  var row = $(this).parent().parent().children();
-  if (!$(this).parent().parent().children().attr('contenteditable')) {
-    for (let i = 0; i <= 3; i++) {
-      row[i].setAttribute('contenteditable', 'true');
-    }
-    $('.edit')
-      .text('Stop Edit')
-      .removeClass('btn-info')
-      .addClass('btn-warning');
-  } else {
-    for (let i = 0; i <= 3; i++) {
-      row[i].setAttribute('contenteditable', 'false');
-    }
-    $('.edit').text('Edit').addClass('btn-info').removeClass('btn-warning');
-  }
-});
+
 $('.add').click(function() {
   $.ajax({
     type: 'POST',
